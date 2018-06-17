@@ -12,12 +12,12 @@ void setup() {
 }
 
 // the loop function runs over and over again forever
-void loop() {  
-  cross();
-  delay(15000);
-
+void loop() {
   doNotCross();
-  delay(15000);
+  delay(20000);
+
+  cross();
+  delay(10000);
 }
 
 void cross() {
@@ -28,8 +28,22 @@ void cross() {
 }
 
 void doNotCross() {
+  blinkingRed(5);
+
   analogWrite(WHITE_LED_1, 0);
   analogWrite(WHITE_LED_2, 0);
   analogWrite(RED_LED_1, 200);
   analogWrite(RED_LED_2, 200);
+}
+
+void blinkingRed(int times) {
+  for (int i = 0; i < times; i++) {
+    analogWrite(RED_LED_1, 0);
+    analogWrite(RED_LED_2, 0);
+    delay(500);
+
+    analogWrite(RED_LED_1, 200);
+    analogWrite(RED_LED_2, 200);
+    delay(500);
+  }  
 }
